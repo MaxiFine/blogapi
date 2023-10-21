@@ -39,15 +39,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # 3rd Party apps
+    'rest_framework',  # drf
+    'corsheaders',  # cors for frontend host
 
 
     # Local apps
     'accounts.apps.AccountsConfig',
+    'posts.apps.PostsConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # to handle frontend domain port
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -131,4 +135,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # BASIC DEV CONFIGS
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+# CORS CONFIGS FOR FRONTEND DOMAIN
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]  # domain for frontend
+
+# REST FRAMEWORK CONFIGS
+REST_FRAMEWORK = {
+   "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated", # api authentication
+    ],
+
+}
 
