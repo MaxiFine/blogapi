@@ -162,3 +162,13 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 SITE_ID = 1
 
+# CORS CONFIGS to allow multiple hosts
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:8000",
+]
+
+# CSRF protection Configs with React and other Frontends
+# frameworks
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+
